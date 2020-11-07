@@ -1,0 +1,21 @@
+{
+  "name": "web2testat",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "hbs": "~4.0.4",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-hbs": "^2.3.4",
+    "nedb-promises": "^4.1.0",
+    "path": "^0.12.7",
+    "typescript": "^4.0.5"
+  }
+}

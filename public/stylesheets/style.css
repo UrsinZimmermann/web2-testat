@@ -1,0 +1,19 @@
+body
+{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.flexContainer
+{
+  display: flex;
+}
+
+.inputDescription
+{
+  font-weight: bold;
+}
+
+input
+{
+  width: 200px;
+}
