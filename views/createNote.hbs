@@ -1,0 +1,30 @@
+<h1 class="titel">Neues TODO</h1>
+<hr>
+
+<form action="/createNote" method='post'>
+    <div>
+        <label class="inputDescription" for="title">Titel</label>
+        <input name='title'  placeholder='Titel der Notitz' required>
+    </div>
+    <div>
+        <label class="inputDescription" for="description">Beschreibung</label>
+        <input name='description' placeholder='Beschreibung' required>
+    </div>
+    <div>
+        <label class="inputDescription" for="importance">Wichtigkeit</label>
+        <input type="number" name='importance' min="1" max="5" placeholder='Wichtigkeit' required>
+    </div>
+    <div>
+        <label class="inputDescription" for="until">Fertig bis</label>
+        <input type='date' name='until' required>
+    </div>
+    <div>
+        <label class="inputDescription" for="done">Erledigt!</label>
+        <input class="done" type="checkbox">
+    </div>
+    <input type='submit' value='Anlegen'>
+</form>
+
+<form action='/' method='get'>
+    <input type='submit' value='Abbrechen'>
+</form>

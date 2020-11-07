@@ -1,4 +1,5 @@
-import {noteStore} from '../services/noteStore.ts'
+import {noteStore} from '../service/noteStore.js'
+import {Note} from "../service/Note.js";
 
 export class NoteController {
     showIndex(req, res) {
@@ -10,7 +11,9 @@ export class NoteController {
     };
 
     async createNewNote(request, response) {
-        await noteStore.add(request.body.title, request.body.description, request.body.importance, request.body.until, request.body.done)
+        let note = new Note(request.body.title, request.body.description, request.body.importance, request.body.until, request.body.done)
+
+        await noteStore.create(note)
         response.redirect('/')
     }
 
