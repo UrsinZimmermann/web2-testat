@@ -1,25 +1,25 @@
 <header>
-    <div class="flex-container">
+    <div class="flex-container-space">
         <form action="/createNote" method="get">
-            <input type="submit" value="Neue Notiz">
+            <input class="button" type="submit" value="Neue Notiz">
         </form>
 
         <form action="/" method="post">
-            <input type="submit" value="{{session.nextTheme}} Modus">
+            <input class="button" type="submit" value="{{session.nextTheme}} Modus">
             <input type="hidden" name="updateTheme" value="test" hidden>
         </form>
     </div>
 
-    <div class="flex-container">
+    <div class="flex-container-space">
         {{#each session.sortModes}}
             <form action="/" method="post">
-                <input type="submit" value="{{name}}">
+                <input class="button" type="submit" value="{{name}}">
                 <input type="hidden" name="sortedBy" value="{{value}}" hidden>
             </form>
         {{/each}}
 
         <form action="/" method="post">
-            <input type="submit" value="Erledigte {{#if session.showFinished}}verbergen{{else}}anzeigen{{/if}}">
+            <input class="button" type="submit" value="Erledigte {{#if session.showFinished}}verbergen{{else}}anzeigen{{/if}}">
             <input type="hidden" name="showFinished" value="true" hidden>
         </form>
     </div>
@@ -27,23 +27,31 @@
 </header>
 <main>
     {{#each notes}}
-
+        <div class="flex-container-space note-item">
             <div>
                 <input class="done" type="checkbox" disabled {{#if this.done}}checked{{/if}}>
-                <label class="inputDescription" for="done">Erledigt!</label>
+                <label class="input-description" for="done">Erledigt!</label>
             </div>
             <div>
                 <div class="note-head">
                     <label class="note-titel">{{this.title}}</label>
-                    <label class="note-importance">{{this.importance}}</label>
+                    <span class="stars">
+                        {{#stars this.importance}}
+                            {{this}}
+                        {{/stars}}
+                        {{#emptystars this.importance}}
+                            {{this}}
+                        {{/emptystars}}
+                    </span>
                 </div>
                 <div>
                     <textarea class="note-description" cols="60" rows="3" disabled>{{this.description}}</textarea>
                 </div>
             </div>
             <form action="/note/{{this._id}}" method='get'>
-                <input type='submit' class="note-edit" value='Bearbeiten'>
+                <input class="button" type='submit' class="note-edit" value='Bearbeiten'>
             </form>
+        </div>
     {{else}}
         <div id="no-items-div">Alle offenen Todos erledigt</div>
     {{/each}}
