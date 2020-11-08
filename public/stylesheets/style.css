@@ -1,3 +1,7 @@
+textarea {
+    resize: none;
+}
+
 .light {
     background-color: white;
     color: black;
