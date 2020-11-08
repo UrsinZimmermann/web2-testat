@@ -28,15 +28,24 @@ export class NoteController {
         res.render('createNote');
     };
 
-    async createNewNote(request, response) {
-        let note = new Note(request.body.title, request.body.description, request.body.importance, request.body.until, new Date(), false)
-        await noteStore.create(note)
-        await this.showIndex()
+    async showNote(req, res) {
+        res.render('editNote', {
+            "note": await noteStore.get(req.params.id)
+        })
     }
 
-    async showNote(req, res) {
-        res.render("showorder", await noteStore.get(req.params.id));
-    };
+    async editNote(req, res) {
+        const note = await noteStore.get(req.params.id);
+        const updateNote = new Note(req.body.title, req.body.description, req.body.importance, req.body.dueDate, note.creationDate, !!req.body.done)
+        await noteStore.update(req.params.id, updateNote)
+        res.redirect('/')
+    }
+
+    async createNewNote(req, res) {
+        let note = new Note(req.body.title, req.body.description, req.body.importance, req.body.until, new Date(), false)
+        await noteStore.create(note)
+        res.redirect('/')
+    }
 }
 
 export const noteController = new NoteController();
