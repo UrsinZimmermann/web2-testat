@@ -1,0 +1,30 @@
+<h1 class="titel">TODO bearbeiten</h1>
+<hr>
+
+<form action="/note/{{note._id}}" method='post'>
+    <div>
+        <label class="input-description" for="title">Titel</label>
+        <input name='title' value="{{note.title}}" required>
+    </div>
+    <div>
+        <label class="input-description" for="description">Beschreibung</label>
+        <textarea name='description' cols="60" required>{{note.description}}</textarea>
+    </div>
+    <div>
+        <label class="input-description" for="importance">Wichtigkeit</label>
+        <input type="number" name='importance' min="1" max="5" value="{{note.importance}}" required>
+    </div>
+    <div>
+        <label class="input-description" for="until">Fertig bis</label>
+        <input type='date' name='dueDate' value="{{note.dueDate}}" required>
+    </div>
+    <div>
+        <label class="input-description" for="done">Erledigt!</label>
+        <input class="done" name="done" type="checkbox" {{#if note.done}}checked{{/if}}>
+    </div>
+    <input type='submit' value='Speichern'>
+</form>
+
+<form action='/' method='get'>
+    <input type='submit' value='Abbrechen'>
+</form>
