@@ -42,9 +42,10 @@ class NoteStore {
     }
     getSortedByCreationDate(ascending, includeFinished) {
         return __awaiter(this, void 0, void 0, function* () {
+            const invertedAscending = ascending * -1;
             if (includeFinished)
-                return this.db.find({}).sort({ creationDate: ascending });
-            return this.db.find({ done: { $ne: true } }).sort({ creationDate: ascending });
+                return this.db.find({}).sort({ creationDate: invertedAscending });
+            return this.db.find({ done: { $ne: true } }).sort({ creationDate: invertedAscending });
         });
     }
     getSortedByDueDate(ascending, includeFinished) {

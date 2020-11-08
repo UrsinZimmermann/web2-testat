@@ -34,14 +34,16 @@ class NoteStore {
         return this.db.find({done: {$ne: true}}).sort({importance: invertedAscending})
     }
 
-    async getSortedByCreationDate(ascending: boolean, includeFinished: boolean) {
-        if (includeFinished)
-            return this.db.find({}).sort({creationDate: ascending})
+    async getSortedByCreationDate(ascending: number, includeFinished: boolean) {
+        const invertedAscending = ascending * -1;
 
-        return this.db.find({done: {$ne: true}}).sort({creationDate: ascending})
+        if (includeFinished)
+            return this.db.find({}).sort({creationDate: invertedAscending})
+
+        return this.db.find({done: {$ne: true}}).sort({creationDate: invertedAscending})
     }
 
-    async getSortedByDueDate(ascending: boolean, includeFinished: boolean) {
+    async getSortedByDueDate(ascending: number, includeFinished: boolean) {
         if (includeFinished)
             return this.db.find({}).sort({dueDate: ascending})
 
