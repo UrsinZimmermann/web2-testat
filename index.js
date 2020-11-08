@@ -9,12 +9,23 @@ const port = 3000;
 
 const app = express();
 
-const hbs = handlebars.create({
-    helpers: {
-        displayDate: function (date) {
-            return new Date(date).toISOString().substring(0, 10);
-        }
-    }
+const hbs = handlebars.create()
+hbs.registerHelper('stars', n => {
+    let star = "★"
+    let starsString = "";
+    for(var i = 0; i < n; ++i)
+        starsString += star
+
+    return starsString
+})
+
+hbs.registerHelper('emptystars', n => {
+    let star = "&#9734"
+    let starsString = "";
+    for(var i = 0; i < 5-n; ++i)
+        starsString += star
+
+    return starsString
 })
 
 app.engine('hbs', hbs.express4({defaultLayout: "views/layout"}));
