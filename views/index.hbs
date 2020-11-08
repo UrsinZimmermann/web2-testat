@@ -1,3 +1,54 @@
-<form action="/createNote" method="get">
-    <input type="submit" value="Create new Note">
-</form>
+<header>
+    <div class="flex-container">
+        <form action="/createNote" method="get">
+            <input type="submit" value="Neue Notiz">
+        </form>
+
+        <form action="/" method="post">
+            <input type="submit" value="{{session.nextTheme}} Modus">
+            <input type="hidden" name="updateTheme" value="test" hidden>
+        </form>
+    </div>
+
+    <div class="flex-container">
+        {{#each session.sortModes}}
+            <form action="/" method="post">
+                <input type="submit" value="{{name}}">
+                <input type="hidden" name="sortedBy" value="{{value}}" hidden>
+            </form>
+        {{/each}}
+
+        <form action="/" method="post">
+            <input type="submit" value="Erledigte {{#if session.showFinished}}verbergen{{else}}anzeigen{{/if}}">
+            <input type="hidden" name="showFinished" value="true" hidden>
+        </form>
+    </div>
+
+</header>
+<main>
+    {{#each notes}}
+        <form get="/note/{{this._id}}" method='get'>
+            <div>
+                <input class="done" type="checkbox" disabled {{#if this.done}}checked{{/if}}>
+                <label class="inputDescription" for="done">Erledigt!</label>
+            </div>
+            <div>
+                <div class="note-head">
+                    <label class="note-titel">{{this.title}}</label>
+                    <label class="note-importance">{{this.importance}}</label>
+                </div>
+                <div>
+                    <textarea class="note-description" cols="60" rows="3" disabled>{{this.description}}</textarea>
+                </div>
+            </div>
+            <div>
+                <input class="note-edit" type='submit' value='Bearbeiten'>
+            </div>
+
+        </form>
+    {{else}}
+        <div id="no-items-div">Alle offenen Todos erledigt</div>
+    {{/each}}
+</main>
+
+

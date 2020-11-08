@@ -24,18 +24,7 @@ class NoteStore {
     }
     updateDone(id, done) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.db.update({ _id: id }, { $set: { done: done } });
-        });
-    }
-    delete(id) {
-        return __awaiter(this, void 0, void 0, function* () {
-            yield this.db.update({ _id: id }, { $set: { "state": "DELETED" } });
-            return yield this.get(id);
-        });
-    }
-    deleteAll() {
-        return __awaiter(this, void 0, void 0, function* () {
-            return this.db.remove({}, { multi: true });
+            return this.db.update({ _id: id }, { $set: { done } });
         });
     }
     get(id) {
@@ -43,30 +32,25 @@ class NoteStore {
             return yield this.db.findOne({ _id: id });
         });
     }
-    getAll() {
-        return __awaiter(this, void 0, void 0, function* () {
-            return this.db.find({});
-        });
-    }
     getSortedByImportance(ascending, includeFinished) {
         return __awaiter(this, void 0, void 0, function* () {
             if (includeFinished)
-                return this.db.find({}).sort({ _importance: ascending ? 1 : -1 });
-            return this.db.find({ _finished: { $ne: true } }).sort({ _importance: ascending ? 1 : -1 });
+                return this.db.find({}).sort({ importance: ascending });
+            return this.db.find({ done: { $ne: true } }).sort({ importance: ascending });
         });
     }
     getSortedByCreationDate(ascending, includeFinished) {
         return __awaiter(this, void 0, void 0, function* () {
             if (includeFinished)
-                return this.db.find({}).sort({ _creationDate: ascending ? 1 : -1 });
-            return this.db.find({ _finished: { $ne: true } }).sort({ _creationDate: ascending ? 1 : -1 });
+                return this.db.find({}).sort({ creationDate: ascending });
+            return this.db.find({ done: { $ne: true } }).sort({ creationDate: ascending });
         });
     }
     getSortedByDueDate(ascending, includeFinished) {
         return __awaiter(this, void 0, void 0, function* () {
             if (includeFinished)
-                return this.db.find({}).sort({ _dueDate: ascending ? 1 : -1 });
-            return this.db.find({ _finished: { $ne: true } }).sort({ _dueDate: ascending ? 1 : -1 });
+                return this.db.find({}).sort({ dueDate: ascending });
+            return this.db.find({ done: { $ne: true } }).sort({ dueDate: ascending });
         });
     }
 }

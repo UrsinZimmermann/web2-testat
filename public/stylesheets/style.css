@@ -1,19 +1,35 @@
-body
-{
-  font-family: Arial, Helvetica, sans-serif;
+.light {
+    background-color: white;
+    color: black;
 }
 
-.flexContainer
-{
-  display: flex;
+.dark {
+    background-color: black;
+    color: lightgrey;
 }
 
-.inputDescription
-{
-  font-weight: bold;
+body {
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-input
-{
-  width: 200px;
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-description {
+    font-weight: bold;
+}
+
+input {
+    width: 200px;
+}
+
+#no-items-div{
+    background-color: lightskyblue;
+    margin: 10px;
+    border: 1px solid darkgray;
+    padding: 20px;
+    border-radius: 15px;
+    color: black;
 }

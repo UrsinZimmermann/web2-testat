@@ -1,8 +1,7 @@
 import bodyParser from 'body-parser';
 import express from 'express';
-import hbs from 'express-hbs';
+import handlebars from 'express-hbs';
 import path from 'path';
-
 import {noteRoutes} from './routes/noteRoutes.js';
 
 const hostname = '127.0.0.1';
@@ -10,11 +9,19 @@ const port = 3000;
 
 const app = express();
 
-app.engine('hbs', hbs.express4());
-app.set('view engine', 'hbs');
+const hbs = handlebars.create({
+    helpers: {
+        displayDate: function (date) {
+            return new Date(date).toISOString().substring(0, 10);
+        }
+    }
+})
+
+app.engine('hbs', hbs.express4({defaultLayout: "views/layout"}));
 app.set(path.resolve(), 'views');
+app.set('view engine', 'hbs');
 
-
+app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(path.resolve(), 'public')));
 
