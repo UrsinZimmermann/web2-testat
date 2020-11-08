@@ -20,11 +20,10 @@
     </div>
     <div>
         <label class="input-description" for="done">Erledigt!</label>
-        <input class="done" name="done" type="checkbox" {{#if note.done}}checked{{/if}}>
+        <input class="button" class="done" name="done" type="checkbox" {{#if note.done}}checked{{/if}}>
     </div>
     <input type='submit' value='Speichern'>
-</form>
-
-<form action='/' method='get'>
-    <input type='submit' value='Abbrechen'>
+    <form action='/' method='get'>
+        <input class="button" type='submit' value='Abbrechen' formnovalidate>
+    </form>
 </form>

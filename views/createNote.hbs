@@ -18,9 +18,11 @@
         <label class="input-description" for="until">Fertig bis</label>
         <input type='date' name='until' required>
     </div>
-    <input type='submit' value='Anlegen'>
+    <input class="button" type='submit' value='Anlegen'>
+
+    <form action='/' method='get'>
+        <input class="button" type='submit' value='Abbrechen' formnovalidate>
+    </form>
 </form>
 
-<form action='/' method='get'>
-    <input type='submit' value='Abbrechen'>
-</form>
+
