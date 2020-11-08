@@ -27,7 +27,7 @@
 </header>
 <main>
     {{#each notes}}
-        <form get="/note/{{this._id}}" method='get'>
+
             <div>
                 <input class="done" type="checkbox" disabled {{#if this.done}}checked{{/if}}>
                 <label class="inputDescription" for="done">Erledigt!</label>
@@ -41,11 +41,9 @@
                     <textarea class="note-description" cols="60" rows="3" disabled>{{this.description}}</textarea>
                 </div>
             </div>
-            <div>
-                <input class="note-edit" type='submit' value='Bearbeiten'>
-            </div>
-
-        </form>
+            <form action="/note/{{this._id}}" method='get'>
+                <input type='submit' class="note-edit" value='Bearbeiten'>
+            </form>
     {{else}}
         <div id="no-items-div">Alle offenen Todos erledigt</div>
     {{/each}}
