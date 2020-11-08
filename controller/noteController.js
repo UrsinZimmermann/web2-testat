@@ -25,12 +25,17 @@ export class NoteController {
     }
 
     async createNote(req, res) {
-        res.render('createNote');
+        req.session = updateSession(req)
+        res.render('createNote', {
+            "session": req.session
+        });
     };
 
     async showNote(req, res) {
+        req.session = updateSession(req)
         res.render('editNote', {
-            "note": await noteStore.get(req.params.id)
+            "note": await noteStore.get(req.params.id),
+            "session": req.session
         })
     }
 
