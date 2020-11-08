@@ -3,7 +3,7 @@ export class Note {
     private description: string;
     private importance: number;
     private dueDate: Date;
-    private creationDate: Date;
+    creationDate: Date;
     private done: boolean;
 
     constructor(title: string, description: string, importance: number, dueDate: Date, creationDate: Date, done: boolean) {
