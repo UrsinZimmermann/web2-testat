@@ -34,9 +34,10 @@ class NoteStore {
     }
     getSortedByImportance(ascending, includeFinished) {
         return __awaiter(this, void 0, void 0, function* () {
+            const invertedAscending = ascending * -1;
             if (includeFinished)
-                return this.db.find({}).sort({ importance: ascending });
-            return this.db.find({ done: { $ne: true } }).sort({ importance: ascending });
+                return this.db.find({}).sort({ importance: invertedAscending });
+            return this.db.find({ done: { $ne: true } }).sort({ importance: invertedAscending });
         });
     }
     getSortedByCreationDate(ascending, includeFinished) {

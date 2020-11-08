@@ -1,5 +1,6 @@
 import Datastore from 'nedb-promises';
 import {Note} from './Note'
+import {isNegativeNumberLiteral} from "tslint";
 
 class NoteStore {
     private db: Datastore;
@@ -20,15 +21,17 @@ class NoteStore {
         return this.db.update({_id: id}, {$set:{done}})
     }
 
-    async get(id: number) {
+    async get(id: string): Promise<Note> {
         return await this.db.findOne({_id: id});
     }
 
-    async getSortedByImportance(ascending: boolean, includeFinished: boolean) {
-        if (includeFinished)
-            return this.db.find({}).sort({importance: ascending})
+    async getSortedByImportance(ascending: number, includeFinished: boolean) {
+        const invertedAscending = ascending * -1;
 
-        return this.db.find({done: {$ne: true}}).sort({importance: ascending})
+        if (includeFinished)
+            return this.db.find({}).sort({importance: invertedAscending})
+
+        return this.db.find({done: {$ne: true}}).sort({importance: invertedAscending})
     }
 
     async getSortedByCreationDate(ascending: boolean, includeFinished: boolean) {
