@@ -4,7 +4,7 @@ import {updateSession} from "../helpers/sessionHelper.js";
 
 export class NoteController {
     async showIndex(req, res) {
-        req.session = updateSession(req)
+        updateSession(req)
 
         if (req.session.sortedBy === "importance") {
             res.render("index", {

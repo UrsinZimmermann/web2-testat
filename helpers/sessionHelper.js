@@ -41,16 +41,14 @@ export function updateSession(req) {
         }
     }
 
-    return setSession()
+    setSession(req)
 }
 
-function setSession() {
-    let newSession = {};
-    newSession.theme = contextModel.style.currentStyle
-    newSession.nextTheme = contextModel.style.nextStyle
-    newSession.showFinished = contextModel.showFinished
-    newSession.sortModes = contextModel.sortModes
-    newSession.ascending = contextModel.ascending
-    newSession.sortedBy = contextModel.selectedSort
-    return newSession
+function setSession(req) {
+    req.session.theme = contextModel.style.currentStyle
+    req.session.nextTheme = contextModel.style.nextStyle
+    req.session.showFinished = contextModel.showFinished
+    req.session.sortModes = contextModel.sortModes
+    req.session.ascending = contextModel.ascending
+    req.session.sortedBy = contextModel.selectedSort
 }
