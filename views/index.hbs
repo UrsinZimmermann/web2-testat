@@ -5,7 +5,7 @@
         </form>
 
         <form action="/" method="post">
-            <input class="button" type="submit" value="{{session.nextTheme}} Modus">
+            <input class="button" type="submit" value="{{theme.nextStyle}} Modus">
             <input type="hidden" name="updateTheme" value="test" hidden>
         </form>
     </div>
@@ -29,9 +29,11 @@
     {{#each notes}}
         <div class="flex-container-space note-item">
             <div>
+                <div>{{this.dueDate}}</div>
                 <input class="done" type="checkbox" disabled {{#if this.done}}checked{{/if}}>
                 <label class="input-description" for="done">Erledigt!</label>
             </div>
+
             <div>
                 <div class="flex-container-space">
                     <label class="note-titel">{{this.title}}</label>
@@ -44,9 +46,7 @@
                         {{/emptystars}}
                     </span>
                 </div>
-                <div>
-                    <textarea class="note-description" cols="60" rows="3" disabled>{{this.description}}</textarea>
-                </div>
+                <textarea class="note-description" cols="60" rows="3" disabled>{{this.description}}</textarea>
             </div>
             <form action="/note/{{this._id}}" method='get'>
                 <input class="button" type='submit' class="note-edit" value='Bearbeiten'>

@@ -31,6 +31,7 @@ export function updateSession(req) {
             contextModel.style.nextStyle = temp
         } else if (req.body.showFinished !== undefined) {
             contextModel.showFinished = !contextModel.showFinished
+            req.session.showFinished = contextModel.showFinished
         } else if (req.body.sortedBy !== undefined) {
             if(contextModel.selectedSort === req.body.sortedBy){
                 contextModel.ascending *= -1
@@ -38,17 +39,24 @@ export function updateSession(req) {
                 contextModel.selectedSort = req.body.sortedBy
                 contextModel.ascending = 1
             }
+            req.session.sortModes = contextModel.sortModes
+            req.session.ascending = contextModel.ascending
+            req.session.sortedBy = contextModel.selectedSort
         }
     }
-
-    setSession(req)
 }
 
-function setSession(req) {
-    req.session.theme = contextModel.style.currentStyle
-    req.session.nextTheme = contextModel.style.nextStyle
-    req.session.showFinished = contextModel.showFinished
-    req.session.sortModes = contextModel.sortModes
-    req.session.ascending = contextModel.ascending
-    req.session.sortedBy = contextModel.selectedSort
+export function initSession(req) {
+    if(req.session.showFinished === undefined){
+        req.session.showFinished = contextModel.showFinished
+    }
+    if(req.session.sortModes === undefined) {
+        req.session.sortModes = contextModel.sortModes
+        req.session.ascending = contextModel.ascending
+        req.session.sortedBy = contextModel.selectedSort
+    }
+}
+
+export function getTheme(){
+    return contextModel.style;
 }

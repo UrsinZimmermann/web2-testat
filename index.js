@@ -1,4 +1,3 @@
-import bodyParser from 'body-parser';
 import express from 'express';
 import handlebars from 'express-hbs';
 import path from 'path';
@@ -40,8 +39,7 @@ app.engine('hbs', hbs.express4({defaultLayout: "views/layout"}));
 app.set(path.resolve(), 'views');
 app.set('view engine', 'hbs');
 
-app.use(express.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(path.resolve(), 'public')));
 
 app.use(noteRoutes);

@@ -1,33 +1,41 @@
 import {noteStore} from '../service/noteStore.js'
 import {Note} from "../service/Note.js";
-import {updateSession} from "../helpers/sessionHelper.js";
+import {updateSession, getTheme, initSession} from "../helpers/sessionHelper.js";
 
 export class NoteController {
-    async showIndex(req, res) {
-        updateSession(req)
+    async getIndex(req, res) {
+        initSession(req);
 
         if (req.session.sortedBy === "importance") {
             res.render("index", {
                 "notes": await noteStore.getSortedByImportance(req.session.ascending, req.session.showFinished),
-                "session": req.session
+                "session": req.session,
+                "theme": getTheme()
             });
         } else if (req.session.sortedBy === "dueDate") {
             res.render("index", {
                 "notes": await noteStore.getSortedByDueDate(req.session.ascending, req.session.showFinished),
-                "session": req.session
+                "session": req.session,
+                "theme": getTheme()
             });
         } else {
             res.render("index", {
                 "notes": await noteStore.getSortedByCreationDate(req.session.ascending, req.session.showFinished),
-                "session": req.session
+                "session": req.session,
+                "theme": getTheme()
             });
         }
+    }
+
+    async postIndex(req, res) {
+        updateSession(req)
+        res.redirect('/');
     }
 
     async createNote(req, res) {
         req.session = updateSession(req)
         res.render('createNote', {
-            "session": req.session
+            "theme": getTheme()
         });
     };
 
@@ -35,7 +43,7 @@ export class NoteController {
         req.session = updateSession(req)
         res.render('editNote', {
             "note": await noteStore.get(req.params.id),
-            "session": req.session
+            "theme": getTheme()
         })
     }
 
