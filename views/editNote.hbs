@@ -2,30 +2,22 @@
 <hr>
 
 <form action="/note/{{note._id}}" method='post'>
-    <div class="flex-container-edit-note">
-        <label class="input-description flex-container-edit-note-title" for="title">Titel</label>
-        <input class="flex-container-edit-note-content" name='title' value="{{note.title}}" required>
+    <div class="grid-edit-note">
+        <label class="grid-element input-description " for="title">Titel</label>
+        <input class="grid-element" name='title' value="{{note.title}}" required>
+        <label class="grid-element input-description" for="description">Beschreibung</label>
+        <textarea class="grid-element" name='description' rows="3" required>{{note.description}}</textarea>
+        <label class="grid-element input-description" for="importance">Wichtigkeit</label>
+        <input class="grid-element" type="number" name='importance' min="1" max="5" value="{{note.importance}}" required>
+        <label class="grid-element input-description" for="until">Fertig bis</label>
+        <input class="grid-element" type='date' name='dueDate' value="{{note.dueDate}}" required>
+        <label class="grid-element input-description  flex-container-edit-note-title" for="done">Erledigt!</label>
+        <input class="grid-element" name="done" type="checkbox" {{#if note.done}}checked{{/if}}>
     </div>
-    <div class="flex-container-edit-note">
-        <label class="input-description flex-container-edit-note-title" for="description">Beschreibung</label>
-        <textarea class="flex-container-edit-note-content" name='description' rows="3" required>{{note.description}}</textarea>
+    <div class="form-holder">
+        <input class="button button-edit-note" type='submit' value='Speichern'>
     </div>
-    <div class="flex-container-edit-note">
-        <label class="input-description  flex-container-edit-note-title" for="importance">Wichtigkeit</label>
-        <input class="flex-container-edit-note-content" type="number" name='importance' min="1" max="5" value="{{note.importance}}" required>
-    </div>
-    <div class="flex-container-edit-note">
-        <label class="input-description  flex-container-edit-note-title" for="until">Fertig bis</label>
-        <input class="flex-container-edit-note-content" type='date' name='dueDate' value="{{note.dueDate}}" required>
-    </div>
-    <div class="flex-container-edit-note">
-        <label class="input-description  flex-container-edit-note-title" for="done">Erledigt!</label>
-        <span class="flex-container-edit-note-content">
-            <input name="done" type="checkbox" {{#if note.done}}checked{{/if}}>
-        </span>
-    </div>
-    <input class="button" type='submit' value='Speichern'>
 </form>
-<form action='/' method='get'>
-    <input class="button" type='submit' value='Abbrechen' formnovalidate>
+<form action='/' method='get' class="form-holder">
+    <input class="button button-edit-note" type='submit' value='Abbrechen' formnovalidate>
 </form>

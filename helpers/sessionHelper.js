@@ -42,11 +42,7 @@ export function updateSession(req) {
                 contextModel.selectedSort = req.body.sortedBy
                 contextModel.ascending = 1
                 contextModel.sortModes.forEach(mode => {
-                    if (mode.value === req.body.sortedBy) {
-                        mode.selected = true
-                    } else {
-                        mode.selected = false
-                    }
+                    mode.selected = mode.value === req.body.sortedBy;
                 })
             }
             req.session.sortModes = contextModel.sortModes

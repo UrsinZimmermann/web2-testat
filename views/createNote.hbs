@@ -2,25 +2,21 @@
 <hr>
 
 <form action="/createNote" method='post'>
-    <div class="flex-container-edit-note">
-        <label class="input-description flex-container-edit-note-title" for="title">Titel</label>
-        <input class="flex-container-edit-note-content" name='title'  placeholder='Titel der Notitz' required>
+    <div class="grid-edit-note">
+        <label class="input-description grid-element" for="title">Titel</label>
+        <input class="grid-element" name='title'  placeholder='Titel der Notitz' required>
+        <label class="input-description grid-element" for="description">Beschreibung</label>
+        <textarea class="grid-element" name='description' placeholder='Beschreibung' cols="60" required></textarea>
+        <label class="input-description grid-element" for="importance">Wichtigkeit</label>
+        <input class="grid-element" type="number" name='importance' min="1" max="5" placeholder='Wichtigkeit' required>
+        <label class="input-description grid-element" for="until">Fertig bis</label>
+        <input class="grid-element" type='date' name='until' required>
     </div>
-    <div class="flex-container-edit-note">
-        <label class="input-description flex-container-edit-note-title" for="description">Beschreibung</label>
-        <textarea class="flex-container-edit-note-content" name='description' placeholder='Beschreibung' cols="60" required></textarea>
+    <div class="form-holder">
+        <input class="button button-edit-note" type='submit' value='Anlegen'>
     </div>
-    <div class="flex-container-edit-note">
-        <label class="input-description flex-container-edit-note-title" for="importance">Wichtigkeit</label>
-        <input class="flex-container-edit-note-content" type="number" name='importance' min="1" max="5" placeholder='Wichtigkeit' required>
-    </div>
-    <div class="flex-container-edit-note">
-        <label class="input-description flex-container-edit-note-title" for="until">Fertig bis</label>
-        <input class="flex-container-edit-note-content" type='date' name='until' required>
-    </div>
-    <input class="button" type='submit' value='Anlegen'>
 </form>
 
-<form action='/' method='get'>
-    <input class="button" type='submit' value='Abbrechen' formnovalidate>
+<form action='/' method='get' class="form-holder">
+    <input class="button button-edit-note" type='submit' value='Abbrechen' formnovalidate>
 </form>

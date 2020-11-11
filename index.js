@@ -20,7 +20,7 @@ const hbs = handlebars.create()
 hbs.registerHelper('stars', n => {
     let star = "★"
     let starsString = "";
-    for (var i = 0; i < n; ++i)
+    for (let i = 0; i < n; ++i)
         starsString += star
 
     return starsString

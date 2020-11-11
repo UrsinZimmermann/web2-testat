@@ -1,24 +1,24 @@
 <header>
     <div class="flex-container-space">
-        <form action="/createNote" method="get">
+        <form class="grid-element" action="/createNote" method="get">
             <input class="button" type="submit" value="Neue Notiz">
         </form>
 
-        <form action="/" method="post">
+        <form class="grid-element" action="/" method="post">
             <input class="button" type="submit" value="{{darkOrLight theme.nextStyle}} Modus">
-            <input type="hidden" name="updateTheme" value="test" hidden>
+            <input  type="hidden" name="updateTheme" value="test" hidden>
         </form>
     </div>
 
     <div class="flex-container-space">
         {{#each session.sortModes}}
-            <form action="/" method="post">
-                <input class="button {{#if selected}}selected{{/if}}" type="submit" value="{{name}}">
+            <form class="grid-element" action="/" method="post">
+                <input class="button {{#if selected}}selected{{/if}}" type="submit" value="Nach {{name}}">
                 <input type="hidden" name="sortedBy" value="{{value}}" hidden>
             </form>
         {{/each}}
 
-        <form action="/" method="post">
+        <form class="grid-element" action="/" method="post">
             <input class="button" type="submit" value="Erledigte {{#if session.showFinished}}verbergen{{else}}anzeigen{{/if}}">
             <input type="hidden" name="showFinished" value="true" hidden>
         </form>
@@ -27,12 +27,12 @@
 </header>
 <main>
     {{#each notes}}
-        <div class="grid-note">
+        <div class="grid-note note-border">
             <span class="center-align">
                 <div class="note-due-date">{{this.dueDate}}</div>
                 <div>
-                    <input class="note-done" type="checkbox" disabled {{#if this.done}}checked{{/if}}>
                     <label class="input-description" for="done">Erledigt!</label>
+                    <input class="note-done" type="checkbox" disabled {{#if this.done}}checked{{/if}}>
                 </div>
             </span>
 
@@ -51,7 +51,7 @@
                 <textarea id="note-description" rows="3" disabled>{{this.description}}</textarea>
             </span>
             <form class="center-align" action="/note/{{this._id}}" method='get'>
-                <input class="button button-edit" type='submit' class="note-edit" value='Bearbeiten'>
+                <input class="button" type='submit' class="note-edit" value='Bearbeiten'>
             </form>
         </div>
     {{else}}
