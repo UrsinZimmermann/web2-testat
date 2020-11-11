@@ -7,9 +7,31 @@ textarea {
     color: black;
 }
 
+.light .selected {
+    background-color: darkgray;
+}
+
 .dark {
     background-color: #151212;
     color: lightgrey;
+}
+
+.dark .button {
+    background-color: darkblue;
+    color: lightgrey;
+}
+
+.dark .selected {
+    background-color: blue;
+}
+
+#no-items-div {
+    background-color: lightskyblue;
+    margin: 10px;
+    border: 1px solid darkgray;
+    padding: 20px;
+    border-radius: 15px;
+    color: black;
 }
 
 body {
@@ -23,7 +45,7 @@ body {
     justify-content: space-between;
 }
 
-.stars{
+.stars {
     color: darkgoldenrod;
 }
 
@@ -31,19 +53,25 @@ body {
     font-weight: bold;
 }
 
-input {
-    width: 200px;
-}
-
-#no-items-div{
-    background-color: lightskyblue;
-    margin: 10px;
-    border: 1px solid darkgray;
-    padding: 20px;
-    border-radius: 15px;
-    color: black;
-}
-
 .button {
     padding: 10px;
+    width: auto;
+}
+
+.flex-container-edit-note {
+    display: flex;
+    margin-top: 10px;
+}
+
+.flex-container-edit-note-title {
+    flex: 1 0;
+}
+
+.flex-container-edit-note-content {
+    flex: 14 2;
+}
+
+.checkbox-flex {
+    flex: 0;
+    float: left;
 }

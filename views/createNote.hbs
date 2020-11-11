@@ -2,21 +2,21 @@
 <hr>
 
 <form action="/createNote" method='post'>
-    <div>
-        <label class="input-description" for="title">Titel</label>
-        <input name='title'  placeholder='Titel der Notitz' required>
+    <div class="flex-container-edit-note">
+        <label class="input-description flex-container-edit-note-title" for="title">Titel</label>
+        <input class="flex-container-edit-note-content" name='title'  placeholder='Titel der Notitz' required>
     </div>
-    <div>
-        <label class="input-description" for="description">Beschreibung</label>
-        <textarea name='description' placeholder='Beschreibung' cols="60" required></textarea>
+    <div class="flex-container-edit-note">
+        <label class="input-description flex-container-edit-note-title" for="description">Beschreibung</label>
+        <textarea class="flex-container-edit-note-content" name='description' placeholder='Beschreibung' cols="60" required></textarea>
     </div>
-    <div>
-        <label class="input-description" for="importance">Wichtigkeit</label>
-        <input type="number" name='importance' min="1" max="5" placeholder='Wichtigkeit' required>
+    <div class="flex-container-edit-note">
+        <label class="input-description flex-container-edit-note-title" for="importance">Wichtigkeit</label>
+        <input class="flex-container-edit-note-content" type="number" name='importance' min="1" max="5" placeholder='Wichtigkeit' required>
     </div>
-    <div>
-        <label class="input-description" for="until">Fertig bis</label>
-        <input type='date' name='until' required>
+    <div class="flex-container-edit-note">
+        <label class="input-description flex-container-edit-note-title" for="until">Fertig bis</label>
+        <input class="flex-container-edit-note-content" type='date' name='until' required>
     </div>
     <input class="button" type='submit' value='Anlegen'>
 </form>

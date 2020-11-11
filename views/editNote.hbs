@@ -2,25 +2,27 @@
 <hr>
 
 <form action="/note/{{note._id}}" method='post'>
-    <div>
-        <label class="input-description" for="title">Titel</label>
-        <input name='title' value="{{note.title}}" required>
+    <div class="flex-container-edit-note">
+        <label class="input-description flex-container-edit-note-title" for="title">Titel</label>
+        <input class="flex-container-edit-note-content" name='title' value="{{note.title}}" required>
     </div>
-    <div>
-        <label class="input-description" for="description">Beschreibung</label>
-        <textarea name='description' cols="60" required>{{note.description}}</textarea>
+    <div class="flex-container-edit-note">
+        <label class="input-description flex-container-edit-note-title" for="description">Beschreibung</label>
+        <textarea class="flex-container-edit-note-content" name='description' rows="3" required>{{note.description}}</textarea>
     </div>
-    <div>
-        <label class="input-description" for="importance">Wichtigkeit</label>
-        <input type="number" name='importance' min="1" max="5" value="{{note.importance}}" required>
+    <div class="flex-container-edit-note">
+        <label class="input-description  flex-container-edit-note-title" for="importance">Wichtigkeit</label>
+        <input class="flex-container-edit-note-content" type="number" name='importance' min="1" max="5" value="{{note.importance}}" required>
     </div>
-    <div>
-        <label class="input-description" for="until">Fertig bis</label>
-        <input type='date' name='dueDate' value="{{note.dueDate}}" required>
+    <div class="flex-container-edit-note">
+        <label class="input-description  flex-container-edit-note-title" for="until">Fertig bis</label>
+        <input class="flex-container-edit-note-content" type='date' name='dueDate' value="{{note.dueDate}}" required>
     </div>
-    <div>
-        <label class="input-description" for="done">Erledigt!</label>
-        <input class="button" class="done" name="done" type="checkbox" {{#if note.done}}checked{{/if}}>
+    <div class="flex-container-edit-note">
+        <label class="input-description  flex-container-edit-note-title" for="done">Erledigt!</label>
+        <span class="flex-container-edit-note-content">
+            <input name="done" type="checkbox" {{#if note.done}}checked{{/if}}>
+        </span>
     </div>
     <input class="button" type='submit' value='Speichern'>
 </form>
