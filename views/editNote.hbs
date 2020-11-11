@@ -11,7 +11,7 @@
         <input class="grid-element" type="number" name='importance' min="1" max="5" value="{{note.importance}}" required>
         <label class="grid-element input-description" for="until">Fertig bis</label>
         <input class="grid-element" type='date' name='dueDate' value="{{note.dueDate}}" required>
-        <label class="grid-element input-description  flex-container-edit-note-title" for="done">Erledigt!</label>
+        <label class="grid-element input-description" for="done">Erledigt!</label>
         <input class="grid-element" name="done" type="checkbox" {{#if note.done}}checked{{/if}}>
     </div>
     <div class="form-holder">

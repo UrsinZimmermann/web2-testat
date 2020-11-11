@@ -73,11 +73,6 @@ body {
     margin-top: 10px;
 }
 
-.checkbox-flex {
-    flex: 0;
-    float: left;
-}
-
 .grid-note {
     padding: 5px;
     display: grid;
@@ -132,19 +127,6 @@ body {
         margin-top: 10px;
     }
 
-    .flex-container-edit-note-title {
-        flex: 1 0;
-    }
-
-    .flex-container-edit-note-content {
-        flex: 14 2;
-    }
-
-    .checkbox-flex {
-        flex: 0;
-        float: left;
-    }
-
     .grid-note {
         display: grid;
         grid-template-columns: auto 1fr auto;
@@ -171,6 +153,6 @@ body {
     }
 
     .note-border {
-        border: 0px;
+        border: 0;
     }
 }

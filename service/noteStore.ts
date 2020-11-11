@@ -1,6 +1,5 @@
 import Datastore from 'nedb-promises';
 import {Note} from './Note'
-import {isNegativeNumberLiteral} from "tslint";
 
 class NoteStore {
     private db: Datastore;
