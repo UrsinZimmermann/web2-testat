@@ -17,10 +17,6 @@ class NoteStore {
         return this.db.update({_id: id}, {$set: {...note}})
     }
 
-    async updateDone(id: number, done: boolean) {
-        return this.db.update({_id: id}, {$set:{done}})
-    }
-
     async get(id: string): Promise<Note> {
         return await this.db.findOne({_id: id});
     }

@@ -29,11 +29,15 @@ hbs.registerHelper('stars', n => {
 hbs.registerHelper('emptystars', n => {
     let star = "&#9734"
     let starsString = "";
-    for (var i = 0; i < 5 - n; ++i)
+    for (let i = 0; i < 5 - n; ++i)
         starsString += star
 
     return starsString
 })
+
+hbs.registerHelper('darkOrLight', function(arg1) {
+    return (arg1 === "dark") ? "Dunkler" : "Heller";
+});
 
 app.engine('hbs', hbs.express4({defaultLayout: "views/layout"}));
 app.set(path.resolve(), 'views');

@@ -22,11 +22,6 @@ class NoteStore {
             return this.db.update({ _id: id }, { $set: Object.assign({}, note) });
         });
     }
-    updateDone(id, done) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return this.db.update({ _id: id }, { $set: { done } });
-        });
-    }
     get(id) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this.db.findOne({ _id: id });
